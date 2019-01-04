@@ -16,3 +16,10 @@ rake db:seed
 ./bin/webpack-dev-server
 rails s
 ```
+
+TODO:
+- [ ] redux
+- [ ] redux-saga
+- [ ] enzyme
+- [ ] jest
+- [ ] ag-grid
