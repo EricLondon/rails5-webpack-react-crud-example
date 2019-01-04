@@ -13,7 +13,14 @@ const App = (props) => (
     <div>
       <Route exact path='/' component={People} />
 
-      <Route exact path='/person/edit' component={PersonForm} />
+      <Route exact path='/person/new' component={PersonForm} />
+
+      <Route
+        exact path="/person/:id/edit"
+        render={(routeProps) => (
+          <PersonForm {...routeProps} />
+        )}
+      />
 
       <Route
         exact path="/person/:id/delete"

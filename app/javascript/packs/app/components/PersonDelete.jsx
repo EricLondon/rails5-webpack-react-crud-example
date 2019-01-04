@@ -12,14 +12,12 @@ class PersonDelete extends React.Component {
   }
 
   componentDidMount() {
-    console.log('PersonDelete componentDidMount', this.state)
     fetch(`http://localhost:3000/api/people/${this.state.person_id}`, {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' }
     })
       .then(
         (response) => {
-          console.log('response', response)
           this.setState({
             redirect: '/'
           })

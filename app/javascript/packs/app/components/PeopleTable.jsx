@@ -29,6 +29,7 @@ class PeopleTable extends React.Component {
               <td>{person.first_name}</td>
               <td>{person.last_name}</td>
               <td>
+                <Link className="btn btn-primary" to={`/person/${person.id}/edit`}>Edit</Link>&nbsp;
                 <Link className="btn btn-danger" to={`/person/${person.id}/delete`}>Delete</Link>
               </td>
             </tr>

@@ -7,6 +7,10 @@ class PersonNew extends React.Component {
 
     this.state = {
       person: {
+        id: {
+          value: this.getPersonId(props),
+          error: ''
+        },
         first_name: {
           value: '',
           error: ''
@@ -27,6 +31,52 @@ class PersonNew extends React.Component {
     this.setLastName = this.setLastName.bind(this)
     this.setEmail = this.setEmail.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    if (this.state.person.id.value) {
+      fetch(`http://localhost:3000/api/people/${this.state.person.id.value}`, {
+        method: 'get',
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then(response => response.json())
+        .then(
+          (response) => {
+            this.setState({
+              person: {
+                id: {
+                  value: response.id,
+                  error: ''
+                },
+                first_name: {
+                  value: response.first_name,
+                  error: ''
+                },
+                last_name: {
+                  value: response.last_name,
+                  error: ''
+                },
+                email: {
+                  value: response.email,
+                  error: ''
+                }
+              }
+            })
+          },
+          (error) => {
+            // TODO
+            console.log('error', error)
+          }
+        )
+    }
+  }
+
+  getPersonId(props) {
+    try {
+      return props.match.params.id
+    } catch (error) {
+      return null
+    }
   }
 
   setFirstName(event) {
@@ -71,24 +121,49 @@ class PersonNew extends React.Component {
       }
     }
 
-    fetch('http://localhost:3000/api/people', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    })
-      .then(response => response.json())
-      .then(
-        (response) => {
-          console.log('response', response)
-          this.setState({
-            redirect: '/'
-          })
-        },
-        (error) => {
-          // TODO
-          console.log('error', error)
-        }
-      )
+    if (this.state.person.id.value) {
+
+      // update person
+      fetch(`http://localhost:3000/api/people/${this.state.person.id.value}`, {
+        method: 'put',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+        .then(response => response.json())
+        .then(
+          (response) => {
+            this.setState({
+              redirect: '/'
+            })
+          },
+          (error) => {
+            // TODO
+            console.log('error', error)
+          }
+        )
+
+    } else {
+
+      // new person
+      fetch('http://localhost:3000/api/people', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+        .then(response => response.json())
+        .then(
+          (response) => {
+            this.setState({
+              redirect: '/'
+            })
+          },
+          (error) => {
+            // TODO
+            console.log('error', error)
+          }
+        )
+
+    }
 
   }
 

@@ -45,7 +45,7 @@ class People extends React.Component {
         <div>
           <h3>People</h3>
           <PeopleTable people={people}></PeopleTable>
-          <Link className="btn btn-primary" to="/person/edit">Add Person</Link>
+          <Link className="btn btn-success" to="/person/new">Add Person</Link>
         </div>
       )
     }
