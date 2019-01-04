@@ -2,6 +2,8 @@ import React from 'react'
 // import ReactDOM from 'react-dom'
 // import PropTypes from 'prop-types'
 
+import PeopleTable from './PeopleTable'
+
 class People extends React.Component {
   constructor(props) {
     super(props)
@@ -43,26 +45,7 @@ class People extends React.Component {
       return (
         <div>
           <h3>People</h3>
-          <table className="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>First</th>
-                <th>Last</th>
-              </tr>
-            </thead>
-            <tbody>
-              {people.map(person => (
-                <tr key={person.id}>
-                  <td>{person.id}</td>
-                  <td>{person.email}</td>
-                  <td>{person.first_name}</td>
-                  <td>{person.last_name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <PeopleTable people={this.state.people}></PeopleTable>
         </div>
       )
     }
