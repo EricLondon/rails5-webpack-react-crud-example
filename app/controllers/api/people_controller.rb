@@ -1,4 +1,6 @@
 class Api::PeopleController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
+
   before_action :set_person, only: [:show, :update, :destroy]
 
   def index
