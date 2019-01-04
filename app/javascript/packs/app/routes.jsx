@@ -5,13 +5,13 @@ import {
 } from 'react-router-dom'
 
 import People from './components/People';
-import PersonNew from './components/PersonNew';
+import PersonForm from './components/PersonForm';
 
 const App = (props) => (
   <Router>
     <div>
       <Route exact path='/' component={People} />
-      <Route exact path='/person/new' component={PersonNew} />
+      <Route exact path='/person/edit' component={PersonForm} />
     </div>
   </Router>
 )

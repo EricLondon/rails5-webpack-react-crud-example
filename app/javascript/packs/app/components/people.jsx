@@ -3,6 +3,7 @@ import React from 'react'
 // import PropTypes from 'prop-types'
 
 import PeopleTable from './PeopleTable'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 class People extends React.Component {
   constructor(props) {
@@ -19,14 +20,12 @@ class People extends React.Component {
       .then(response => response.json())
       .then(
         (records) => {
-          console.log('records', records)
           this.setState({
             isLoaded: true,
             people: records
           })
         },
         (error) => {
-          console.log('error', error)
           this.setState({
             isLoaded: true,
             error
@@ -45,7 +44,8 @@ class People extends React.Component {
       return (
         <div>
           <h3>People</h3>
-          <PeopleTable people={this.state.people}></PeopleTable>
+          <PeopleTable people={people}></PeopleTable>
+          <Link className="btn btn-primary" to="/person/edit">Add Person</Link>
         </div>
       )
     }
