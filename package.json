@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "ag-grid-community": "^19.1.4",
+    "ag-grid-react": "^19.1.2",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "4.0.0",
     "jquery": "^3.3.1",
