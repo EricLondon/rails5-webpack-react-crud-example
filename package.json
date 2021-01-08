@@ -7,7 +7,7 @@
     "ag-grid-react": "^19.1.2",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "4.3.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.14.6",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
